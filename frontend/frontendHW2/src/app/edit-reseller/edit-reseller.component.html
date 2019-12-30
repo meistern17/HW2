@@ -1,0 +1,45 @@
+<form [formGroup]="resellerFormGroup" class="reseller-form">
+
+
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="name" required>
+    <mat-hint align="end">The name of the reseller</mat-hint>
+    <mat-error *ngIf="resellerFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Location" formControlName="location" required>
+    <mat-hint align="end">The location of the reseller</mat-hint>
+    <mat-error *ngIf="resellerFormGroup.controls.location.hasError('forbiddenLocation')">Location not valid</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Size" formControlName="size">
+    <mat-hint align="end">The size in m2 of the reseller</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Emloyees" formControlName="employees">
+    <mat-hint align="end">The number of employees of the reseller</mat-hint>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="bio">Bio</mat-checkbox>
+
+  <mat-form-field>
+    <mat-select multiple placeholder="Sweets"
+                formControlName="sweets">
+      <mat-option *ngFor="let sweetOption of sweetOptions"
+                  [value]="sweetOption.id">{{sweetOption.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The sweets of the reseller</mat-hint>
+  </mat-form-field>
+
+
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!resellerFormGroup.valid" (click)="createReseller()">
+      <span *ngIf="!resellerFormGroup.controls.id.value">Create</span>
+      <span *ngIf="resellerFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>

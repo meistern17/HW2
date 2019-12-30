@@ -1,0 +1,28 @@
+.sweet-form {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin: 3rem auto;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  color: #d3d3d3;
+}
+.full {
+  color: red;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: red;
+}
+
+.sr-only
+{
+  display: none !important;
+}
+
